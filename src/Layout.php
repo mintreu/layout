@@ -8,6 +8,7 @@ class Layout extends Component
 {
 
     public bool $jsStyle = false;
+    public bool $pwa=false;
 
 
     public function render()

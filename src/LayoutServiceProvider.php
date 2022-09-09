@@ -3,6 +3,8 @@
 namespace Mintreu\Layout;
 
 use Illuminate\Support\Facades\Blade;
+use Mintreu\Layout\Commands\ManifestCommand;
+use Mintreu\Layout\Commands\ThemeCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Mintreu\Layout\Commands\LayoutCommand;
@@ -21,7 +23,7 @@ class LayoutServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasMigration('create_layout_table')
-            ->hasCommand(LayoutCommand::class);
+            ->hasCommands(LayoutCommand::class,ThemeCommand::class,ManifestCommand::class);
     }
 
 
