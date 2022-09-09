@@ -11,10 +11,15 @@ class ThemeCommand extends Command
 {
     use hasFilesManipulator;
 
-    public $signature = 'layout:theme.stub {name?}';
+    public $signature = 'layout:theme {name?}';
 
-    public $description = 'Create Mintreu Theme Using Layout';
+    public $description = 'Create Your Theme Using Mintreu::Layout';
 
+    /**
+     * @return int
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
     public function handle(): int
     {
         $themeName = (string) Str::of($this->argument('name') ?? $this->askRequired('Name (e.g. `awesome-theme.stub`)', 'name'))
@@ -22,7 +27,6 @@ class ThemeCommand extends Command
             ->trim('\\')
             ->trim(' ')
             ->replace('/', '\\');
-
 
 //        $this->copyStubToApp('manifest',public_path('manifest.json'));
 
@@ -33,7 +37,7 @@ class ThemeCommand extends Command
         ]);
 
 
-        $this->comment('All done');
+        $this->comment('Mintreu::Layout -  Hurrah! Your Theme Generate Successfully');
 
         return self::SUCCESS;
     }
