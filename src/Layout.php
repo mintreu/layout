@@ -12,7 +12,7 @@ class Layout extends Component
     public bool $ogTags;
     public string $layout_title;
 
-    public function __construct(string $title=null,bool $manifest=false,bool $via_js=false,bool $og_tag=false)
+    public function __construct(string $title='',bool $manifest=false,bool $via_js=false,bool $og_tag=false)
     {
         $this->manifest = $manifest;
         $this->jsStyle = $via_js;
