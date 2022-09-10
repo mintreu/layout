@@ -19,7 +19,7 @@ class ManifestCommand extends Command
      */
     public function handle(): int
     {
-        $this->copyStubToApp('manifest',public_path('manifest.json'),[
+        $this->copyStubToApp('manifest',public_path('/manifest.json'),[
             'name' => $name= config('app.name'),
             'short-name' => Str::slug($name),
         ]);

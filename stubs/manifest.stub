@@ -1,5 +1,5 @@
 {
-    "short_name": "{{ short-name}}",
+    "short_name": "{{ short-name }}",
     "name": "{{ name }}",
     "description": "Progressive web application demonstration",
     "icons": [

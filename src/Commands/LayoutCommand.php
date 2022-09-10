@@ -9,7 +9,7 @@ use Mintreu\Layout\Commands\Traits\hasFilesManipulator;
 class LayoutCommand extends Command
 {
     use hasFilesManipulator;
-    
+
     public $signature = 'make:layout {name}';
 
     public $description = 'My command';
@@ -27,7 +27,7 @@ class LayoutCommand extends Command
         $this->copyStubToApp('layout',resource_path('views/'.$layoutName.'.blade.php'),[
             'layout_title' => ucfirst($layoutName).'|'.config('app.name'),
             'layout_keyword' => implode(',',[$layoutName,config('app.name'),',layout']),
-            'layout_description' => config('app.name').'meta description goes here',
+            'layout_description' => config('app.name').' meta description goes here',
         ]);
 
 
