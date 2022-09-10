@@ -4,9 +4,12 @@ namespace Mintreu\Layout\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
+use Mintreu\Layout\Commands\Traits\hasFilesManipulator;
 
 class ManifestCommand extends Command
 {
+    use hasFilesManipulator;
+
     public $signature = 'layout:manifest';
 
     public $description = 'Default Manifest Generate For Future Use';

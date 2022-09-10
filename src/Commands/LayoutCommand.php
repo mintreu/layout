@@ -4,9 +4,12 @@ namespace Mintreu\Layout\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
+use Mintreu\Layout\Commands\Traits\hasFilesManipulator;
 
 class LayoutCommand extends Command
 {
+    use hasFilesManipulator;
+    
     public $signature = 'make:layout {name}';
 
     public $description = 'My command';
