@@ -1,6 +1,6 @@
 {
-    "short_name": "Arrivals",
-    "name": "Arrivals at Sky High",
+    "short_name": "{{ short-name}}",
+    "name": "{{ name }}",
     "description": "Progressive web application demonstration",
     "icons": [
         {

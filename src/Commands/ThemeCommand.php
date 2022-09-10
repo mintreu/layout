@@ -22,7 +22,7 @@ class ThemeCommand extends Command
      */
     public function handle(): int
     {
-        $themeName = (string) Str::of($this->argument('name') ?? $this->askRequired('Name (e.g. `awesome-theme.stub`)', 'name'))
+        $themeName = (string) Str::of($this->argument('name') ?? $this->askRequired('Name (e.g. `awesome-theme`)', 'name'))
             ->trim('/')
             ->trim('\\')
             ->trim(' ')

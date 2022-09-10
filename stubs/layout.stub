@@ -1,0 +1,9 @@
+<x-layout::layout>
+
+    <x-slot name='layout_title'>{{ layout_title }}</x-slot>
+    <x-slot name='layout_keyword'>{{ layout_keyword }}</x-slot>
+    <x-slot name='layout_description'>{{ layout_description }}</x-slot>
+
+
+
+</x-layout::layout>
