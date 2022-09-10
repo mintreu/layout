@@ -9,11 +9,15 @@ class Layout extends Component
 
     public bool $jsStyle;
     public bool $manifest;
+    public bool $ogTags;
+    public string $layout_title;
 
-    public function __construct(bool $manifest=false,bool $jsStyle=false)
+    public function __construct(string $title=null,bool $manifest=false,bool $via_js=false,bool $og_tag=false)
     {
         $this->manifest = $manifest;
-        $this->jsStyle = $jsStyle;
+        $this->jsStyle = $via_js;
+        $this->ogTags = $og_tag;
+        $this->layout_title = $title;
     }
 
 
