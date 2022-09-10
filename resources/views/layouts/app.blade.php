@@ -5,8 +5,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @if($manifest)
-        <link rel="manifest" href="{{ asset("manifest.json") }}">@endif
     @if(!empty($layout_keyword))
         <meta name="keyword" content="{{ $layout_keyword }}" />@endif
     @if(!empty($layout_description))
@@ -14,6 +12,8 @@
     <title>{{ $layout_title ?? config('app.name') }}</title>
     @if(!empty($layout_favicon))
         <link rel="icon" type="image/png" href="{{ asset($layout_favicon) }}" />@endif
+    @if($manifest)
+        <link rel="manifest" href="{{ asset("manifest.json") }}">@endif
     <!-- Default Stylesheets -->
     @if(!$jsStyle)
     @vite('resources/css/app.css')
