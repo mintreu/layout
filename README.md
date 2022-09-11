@@ -1,36 +1,26 @@
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
-
-# Laravel Application Layout System By Mintreu
+# Mintreu (Blade) Layout For All Kind Of Laravel Application
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/mintreu/layout.svg?style=flat-square)](https://packagist.org/packages/mintreu/layout)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/mintreu/layout/run-tests?label=tests)](https://github.com/mintreu/layout/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/mintreu/layout/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/mintreu/layout/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/mintreu/layout.svg?style=flat-square)](https://packagist.org/packages/mintreu/layout)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+<!-- This is where your description should go. Limit it to a paragraph or two. Consider adding a small example. -->
 
 ## Support us
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/layout.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/layout)
+<!-- [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/layout.jpg?t=1" width="419px" />](https://mintreu.com/github-ad-click/layout) -->
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
+We invest a lot of resources into creating [best in class open source packages](https://mintreu.com/open-source). You can support us by [buying one of our paid products](https://mintreu.com/open-source/support-us).
 
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://mintreu.com/about-us).
 
-## Installation
+## Installation 
 
 You can install the package via composer:
 
 ```bash
 composer require mintreu/layout
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="layout-migrations"
-php artisan migrate
 ```
 
 You can publish the config file with:
@@ -46,17 +36,21 @@ return [
 ];
 ```
 
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="layout-views"
-```
 
 ## Usage
 
-```php
-$layout = new Mintreu\Layout();
-echo $layout->echoPhrase('Hello, Mintreu!');
+you can generate views
+
+```bash
+php artisan make:layout "layoutName"
+```
+generate theme
+```bash
+php artisan layout:theme "layoutName"
+```
+generate manifest
+```bash
+php artisan layout:manifest
 ```
 
 ## Testing

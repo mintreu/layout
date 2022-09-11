@@ -22,7 +22,6 @@ class LayoutServiceProvider extends PackageServiceProvider
             ->name('layout')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_layout_table')
             ->hasCommands(LayoutCommand::class,ThemeCommand::class,ManifestCommand::class);
     }
 

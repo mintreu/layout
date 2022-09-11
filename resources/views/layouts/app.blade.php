@@ -1,3 +1,4 @@
+{{-- Mintreu Blade Layout System For All Kind of Laravel Application  - Read More at https://github.com/mintreu/layout --}}
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head @if(!empty($layout_head)) {{ $layout_head }} @endif>
@@ -25,38 +26,51 @@
     {{-- Application Manifest--}}
     @if($manifest) <link rel="manifest" href="{{ asset("manifest.json") }}">@endif
     <!-- Default Stylesheets -->
-    @if(!$jsStyle)
+    @if(!$jsStyle && $hasViteSupport)
     @vite('resources/css/app.css')
+    @endif
+    @if(!$hasViteSupport && $hasMixSupport)
+        <link href="{{asset('/css/app.css')}}" rel="stylesheet">
     @endif
     @if(!empty($stylesheet))
     <!-- Layout Stylesheets -->
         {{ $stylesheet }}
     @endif
+    @if($hasLivewireSupport)
     <livewire:styles />
+    @endif
     @if(!empty($style))
     <!-- OnDemand Styles -->
         {{ $style }}
     @endif
 </head>
-<body @if(!empty($layout_body)) {{ $layout_body }} @endif>
+<body @if(!empty($layout_body)) {{ $layout_body }}@endif>
+{{-- Body Navbar,loader etc goes here --}}
 @if(!empty($header))
     <!-- OnDemand Slot (Header) -->
     {{ $header }}
 @endif
-
+{{--Main Content Of Body Goes Here--}}
 {{ $slot }}
-
+{{-- Body Footer,Chat Button etc goes here --}}
 @if(!empty($footer))
     <!-- OnDemand Slot (Footer) -->
     {{ $footer }}
 @endif
 <!-- Default Javascript -->
-@vite('resources/js/app.js')
+@if($hasViteSupport)
+    @vite('resources/js/app.js')
+@endif
+@if(!$hasViteSupport && $hasMixSupport)
+    <script src="{{asset('/js/app.js')}}"></script>
+@endif
 @if(!empty($javascript))
     <!-- Layout Javascript -->
     {{ $javascript }}
 @endif
-<livewire:scripts />
+@if( $hasLivewireSupport)
+    <livewire:scripts />
+@endif
 @if(!empty($script))
     <!-- OnDemand Scripts -->
     {{ $script }}
