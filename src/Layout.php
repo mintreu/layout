@@ -15,11 +15,11 @@ class Layout extends Component
     public bool $hasMixSupport;
     public bool $hasLivewireSupport;
 
-    public function __construct(string $title='',bool $manifest=false,bool $via_js=false,bool $og_tag=false,bool $vite=true,bool $mix=false,bool $livewire=true)
+    public function __construct(string $title='',bool $manifest=false,bool $viaJs=false,bool $ogTag=false,bool $vite=true,bool $mix=false,bool $livewire=true)
     {
         $this->manifest = $manifest;
-        $this->jsStyle = $via_js;
-        $this->ogTags = $og_tag;
+        $this->jsStyle = $viaJs;
+        $this->ogTags = $ogTag;
         $this->layout_title = $title;
         $this->hasViteSupport = $vite;
         $this->hasMixSupport = $mix;
