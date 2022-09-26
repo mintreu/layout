@@ -46,7 +46,8 @@
                 height: 70px;
                 position: absolute;
                 animation: spin 1s linear infinite;
-                @else
+                @endif
+                @if($validPreloaderPath && !empty($preloaderPath))
                 width: 100%;
                 height: 100%;
                 position: fixed;

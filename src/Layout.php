@@ -27,7 +27,7 @@ class Layout extends Component
     public bool $hasPreloaderSupport;
     public string $preloaderPath='';
     public array $preloaderColor=[];
-
+    public bool $validPreloaderPath=false;
     /**
      * @param string $title
      * @param bool $manifest
@@ -53,7 +53,7 @@ class Layout extends Component
         bool $livewire=true,
         bool $raw=false,
         bool $preloader = false,
-        string $preloaderPath='',
+        ?string $preloaderPath=null,
         string $preloaderBgColor="#f3f3f3",
         string $preloaderPrimaryColor="#f3f3f3",
         string $preloaderSecondaryColor="#444444"
@@ -68,7 +68,9 @@ class Layout extends Component
         $this->hasLivewireSupport = $livewire;
         $this->hasRawSupport = $raw;
         $this->hasPreloaderSupport = $preloader;
-        $this->preloaderPath = !empty($preloaderPath) ? $preloaderPath : $this->preloaderPath;
+        $this->preloaderPath = asset('preloader.gif');
+        $this->preloaderPath = !is_null($preloaderPath) ? trim($preloaderPath) : $this->preloaderPath;
+        $this->validPreloaderPath = file_exists($this->preloaderPath);
         $this->preloaderColor['bg'] = $preloaderBgColor;
         $this->preloaderColor['primary'] = $preloaderPrimaryColor;
         $this->preloaderColor['secondary'] = $preloaderSecondaryColor;
