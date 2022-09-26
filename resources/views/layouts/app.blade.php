@@ -38,6 +38,42 @@
     @if(!$hasViteSupport && $hasMixSupport)
         <link href="{{asset('/css/app.css')}}" rel="stylesheet">
     @endif
+
+    @if($hasPreloaderSupport)
+        <style>
+            #loader {
+                @if(empty($preloaderPath))
+                background: color({{$preloaderColor['bg']}});
+                border: 12px solid {{$preloaderColor['primary']}};
+                border-radius: 50%;
+                border-top: 12px solid {{$preloaderColor['secondary']}};
+                width: 70px;
+                height: 70px;
+                position: absolute;
+                animation: spin 1s linear infinite;
+                @else
+                position: fixed;
+                background: url('{{$preloaderPath}}') 50% 50% no-repeat rgb(249,249,249);
+                z-index: 9999;
+                @endif
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+            @if(empty($preloaderPath))
+                @keyframes spin {
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+            @endif
+
+
+        </style>
+    @endif
+
     @if(!empty($stylesheet))
     <!-- Layout Stylesheets -->
         {{ $stylesheet }}
@@ -45,12 +81,14 @@
     @if($hasLivewireSupport)
     <livewire:styles />
     @endif
+
     @if(!empty($style))
     <!-- OnDemand Styles -->
         {{ $style }}
     @endif
 </head>
 <body @if(!empty($layout_body)) {{ $layout_body }}@endif>
+@if($hasPreloaderSupport)<div id="preloader"></div>@endif
 {{-- Body Navbar,loader etc goes here --}}
 @if(!empty($header))
     <!-- OnDemand Slot (Header) -->
@@ -70,6 +108,28 @@
 @if(!$hasViteSupport && $hasMixSupport)
     <script src="{{asset('/js/app.js')}}"></script>
 @endif
+
+
+
+@if($hasPreloaderSupport)
+    <script>
+        document.onreadystatechange = function() {
+            if (document.readyState !== "complete") {
+                document.querySelector(
+                    "body").style.visibility = "hidden";
+                document.querySelector(
+                    "#preloader").style.visibility = "visible";
+            } else {
+                document.querySelector(
+                    "#preloader").style.display = "none";
+                document.querySelector(
+                    "body").style.visibility = "visible";
+            }
+        };
+    </script>
+@endif
+
+
 @if(!empty($javascript))
     <!-- Layout Javascript -->
     {{ $javascript }}

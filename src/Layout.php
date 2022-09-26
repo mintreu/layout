@@ -17,7 +17,35 @@ class Layout extends Component
     public bool $hasRawSupport;
     public bool $hasPreloaderSupport;
     public string $preloaderPath='';
-    public function __construct(string $title='',bool $manifest=false,bool $viaJs=false,bool $ogTag=false,bool $vite=true,bool $mix=false,bool $livewire=true,bool $raw=false,bool $preloader = true, string $preloader_url='')
+    public $preloaderColor;
+
+    /**
+     * @param string $title
+     * @param bool $manifest
+     * @param bool $viaJs
+     * @param bool $ogTag
+     * @param bool $vite
+     * @param bool $mix
+     * @param bool $livewire
+     * @param bool $raw
+     * @param bool $preloader
+     * @param string $preloader_url
+     */
+    public function __construct(
+        string $title='',
+        bool $manifest=false,
+        bool $viaJs=false,
+        bool $ogTag=false,
+        bool $vite=true,
+        bool $mix=false,
+        bool $livewire=true,
+        bool $raw=false,
+        bool $preloader = false,
+        string $preloader_url='',
+        string $preloaderBgColor="#f3f3f3",
+        string $preloaderPrimaryColor="#f3f3f3",
+        string $preloaderSecondaryColor="#444444"
+    )
     {
         $this->manifest = $manifest;
         $this->jsStyle = $viaJs;
@@ -29,6 +57,10 @@ class Layout extends Component
         $this->hasRawSupport = $raw;
         $this->hasPreloaderSupport = $preloader;
         $this->preloaderPath = $preloader_url ? $preloader_url : $this->preloaderPath;
+        $this->preloaderColor['bg'] = $preloaderBgColor;
+        $this->preloaderColor['primary'] = $preloaderPrimaryColor;
+        $this->preloaderColor['secondary'] = $preloaderSecondaryColor;
+
     }
 
 
