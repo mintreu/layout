@@ -33,14 +33,7 @@
     @if(!empty($layout_header_raw) && $hasRawSupport) {!! $layout_header_raw !!} @endif
     {{-- Application Manifest--}}
     @if($manifest) <link rel="manifest" href="{{ asset("manifest.json") }}">@endif
-    <!-- Default Stylesheets -->
-    @if(!$jsStyle && $hasViteSupport)
-    @vite('resources/css/app.css')
-    @endif
-    @if(!$hasViteSupport && $hasMixSupport)
-        <link href="{{asset('/css/app.css')}}" rel="stylesheet">
-    @endif
-
+    {{-- Preloader Support --}}
     @if($hasPreloaderSupport)
         <style>
             #preloader {
@@ -66,12 +59,20 @@
             }
             @if(empty($preloaderPath))
                 @keyframes spin {
-                    100% {
-                        transform: rotate(360deg);
-                    }
+                100% {
+                    transform: rotate(360deg);
                 }
+            }
             @endif
         </style>
+    @endif
+    <!-- Default Stylesheets -->
+    @if(!$hasViteSupport && $hasMixSupport)
+        <link href="{{asset('/css/app.css')}}" rel="stylesheet">
+    @endif
+
+    @if(!$jsStyle && $hasViteSupport)
+    @vite('resources/css/app.css')
     @endif
 
     @if(!empty($stylesheet))
@@ -88,6 +89,7 @@
     @endif
 </head>
 <body @if(!empty($layout_body)) {{ $layout_body }}@endif>
+
 @if($hasPreloaderSupport)<div id="preloader"></div>@endif
 {{-- Body Navbar,loader etc goes here --}}
 @if(!empty($header))
@@ -101,16 +103,8 @@
     <!-- OnDemand Slot (Footer) -->
     {{ $footer }}
 @endif
-<!-- Default Javascript -->
-@if($hasViteSupport)
-    @vite('resources/js/app.js')
-@endif
-@if(!$hasViteSupport && $hasMixSupport)
-    <script src="{{asset('/js/app.js')}}"></script>
-@endif
 
-
-
+{{-- Preloader Support --}}
 @if($hasPreloaderSupport)
     <script>
         document.onreadystatechange = function() {
@@ -129,7 +123,13 @@
     </script>
 @endif
 
-
+<!-- Default Javascript -->
+@if($hasViteSupport)
+    @vite('resources/js/app.js')
+@endif
+@if(!$hasViteSupport && $hasMixSupport)
+    <script src="{{asset('/js/app.js')}}"></script>
+@endif
 @if(!empty($javascript))
     <!-- Layout Javascript -->
     {{ $javascript }}
