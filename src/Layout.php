@@ -2,8 +2,17 @@
 
 namespace Mintreu\Layout;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
+/**
+ * This class is part of
+ * Mintreu Laravel Application
+ * Universal Layout For Laravel Application
+ */
 class Layout extends Component
 {
 
@@ -17,7 +26,7 @@ class Layout extends Component
     public bool $hasRawSupport;
     public bool $hasPreloaderSupport;
     public string $preloaderPath='';
-    public $preloaderColor;
+    public string $preloaderColor;
 
     /**
      * @param string $title
@@ -30,6 +39,9 @@ class Layout extends Component
      * @param bool $raw
      * @param bool $preloader
      * @param string $preloader_url
+     * @param string $preloaderBgColor
+     * @param string $preloaderPrimaryColor
+     * @param string $preloaderSecondaryColor
      */
     public function __construct(
         string $title='',
@@ -56,14 +68,16 @@ class Layout extends Component
         $this->hasLivewireSupport = $livewire;
         $this->hasRawSupport = $raw;
         $this->hasPreloaderSupport = $preloader;
-        $this->preloaderPath = $preloader_url ? $preloader_url : $this->preloaderPath;
+        $this->preloaderPath = !empty($preloader_url) ? $preloader_url : $this->preloaderPath;
         $this->preloaderColor['bg'] = $preloaderBgColor;
         $this->preloaderColor['primary'] = $preloaderPrimaryColor;
         $this->preloaderColor['secondary'] = $preloaderSecondaryColor;
 
     }
 
-
+    /**
+     * @return Application|Htmlable|Factory|View
+     */
     public function render()
     {
         return view('layout::layouts.app');

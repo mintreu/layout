@@ -45,7 +45,7 @@
         <style>
             #preloader {
                 @if(empty($preloaderPath))
-                background: color({{$preloaderColor['bg']}});
+                background-color: {{$preloaderColor['bg']}};
                 border: 12px solid {{$preloaderColor['primary']}};
                 border-radius: 50%;
                 border-top: 12px solid {{$preloaderColor['secondary']}};
