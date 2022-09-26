@@ -20,7 +20,7 @@
     @if(!empty($og_description))<meta property="og:description" content="{{ $og_description }}" />@endif
     @if(!empty($og_image))<meta property="og:image" content="{{ asset($og_image) }}" />@endif
         {{-- Bulk OG Meta Tags--}}
-        @if($og_tag_slot)
+        @if(!empty($og_tag_slot))
             {{ $og_tag_slot }}
         @endif
     @endif
