@@ -69,7 +69,7 @@ class Layout extends Component
         $this->hasRawSupport = $raw;
         $this->hasPreloaderSupport = $preloader;
 
-        $this->preloaderPath = !is_null($preloaderPath) ? trim($preloaderPath) : $this->preloaderPath;
+        $this->preloaderPath = !is_null($preloaderPath) ? $preloaderPath : $this->preloaderPath;
 
         if(file_exists(public_path('preloader.gif')) && empty($this->preloaderPath))
         {
