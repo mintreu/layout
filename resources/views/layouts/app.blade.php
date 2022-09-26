@@ -51,7 +51,7 @@
                 width: 100%;
                 height: 100%;
                 position: fixed;
-                background: url('{{$preloaderPath}}') 50% 50% no-repeat rgb(249,249,249);
+                background-image: url('{{$preloaderPath}}') 50% 50% no-repeat rgb(249,249,249);
                 z-index: 9999;
                 @endif
                 top: 0;
