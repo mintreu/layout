@@ -26,7 +26,7 @@ class Layout extends Component
     public bool $hasRawSupport;
     public bool $hasPreloaderSupport;
     public string $preloaderPath='';
-    public string $preloaderColor;
+    public array $preloaderColor=[];
 
     /**
      * @param string $title
