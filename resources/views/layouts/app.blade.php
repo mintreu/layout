@@ -46,7 +46,7 @@
                 height: 70px;
                 position: absolute;
                 animation: spin 1s linear infinite;
-                margin: auto;
+
                 @else
                 width: 100%;
                 height: 100%;
@@ -54,6 +54,7 @@
                 background-image: url('{{$preloaderPath}}') 50% 50% no-repeat rgb(249,249,249);
                 z-index: 9999;
                 @endif
+                margin: auto;
                 top: 0;
                 bottom: 0;
                 left: 0;
