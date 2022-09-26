@@ -68,8 +68,14 @@ class Layout extends Component
         $this->hasLivewireSupport = $livewire;
         $this->hasRawSupport = $raw;
         $this->hasPreloaderSupport = $preloader;
-        $this->preloaderPath = asset('preloader.gif');
+
         $this->preloaderPath = !is_null($preloaderPath) ? trim($preloaderPath) : $this->preloaderPath;
+
+        if(file_exists(public_path('preloader.gif')) && empty($this->preloaderPath))
+        {
+            $this->preloaderPath = asset('preloader.gif');
+        }
+
 
         $this->preloaderColor['bg'] = $preloaderBgColor;
         $this->preloaderColor['primary'] = $preloaderPrimaryColor;
